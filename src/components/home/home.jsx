@@ -1,3 +1,4 @@
+import { Form } from '../form/form';
 import styles from './home.module.scss';
 
 export function Home() {
@@ -60,6 +61,9 @@ export function Home() {
                 />
               </div>
             </div>
+          </div>
+          <div className={styles['second-half']}>
+            <Form />
           </div>
         </section>
       </main>
