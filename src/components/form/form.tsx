@@ -2,8 +2,8 @@ import { BsCheckCircleFill, BsCircle } from 'react-icons/bs';
 import { useAppHook } from '../../hooks/hook';
 import styles from './form.module.scss';
 
-export function Form() {
-  const { userRingFittingSelection } = useAppHook();
+export function FitForm() {
+  const { userRingFittingSelection, fitting } = useAppHook();
 
   const handleFitting = (ringFitting: string) => {
     userRingFittingSelection(ringFitting);
@@ -17,23 +17,31 @@ export function Form() {
         </h3>
         <button
           type="button"
-          className={styles['btn']}
+          className={`${
+            fitting === 'fitted' ? styles['btn-selected'] : styles['btn']
+          }`}
           onClick={() => handleFitting('fitted')}
         >
           <span>Ajustado</span>
-
-          <BsCheckCircleFill className={styles['full']} />
-
-          <BsCircle className={styles['empty']} />
+          {fitting === 'fitted' ? (
+            <BsCheckCircleFill className={styles['full']} />
+          ) : (
+            <BsCircle className={styles['empty']} />
+          )}
         </button>
         <button
           type="button"
-          className={styles['btn']}
+          className={`${
+            fitting === 'loose' ? styles['btn-selected'] : styles['btn']
+          }`}
           onClick={() => handleFitting('loose')}
         >
           <span>Suelto</span>
-          <BsCheckCircleFill className={styles['full']} />
-          <BsCircle className={styles['empty']} />
+          {fitting === 'loose' ? (
+            <BsCheckCircleFill className={styles['full']} />
+          ) : (
+            <BsCircle className={styles['empty']} />
+          )}
         </button>
       </section>
     </>

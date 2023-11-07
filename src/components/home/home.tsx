@@ -1,5 +1,5 @@
 import { useAppHook } from '../../hooks/hook';
-import { Form } from '../form/form';
+import { FitForm } from '../form/form';
 import styles from './home.module.scss';
 
 export function Home() {
@@ -70,7 +70,7 @@ export function Home() {
             </div>
           </div>
           <div className={styles['second-half']}>
-            <Form />
+            <FitForm />
           </div>
         </section>
       </main>

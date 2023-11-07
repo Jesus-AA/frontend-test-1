@@ -15,6 +15,29 @@
     color: #344054;
   }
 
+  .btn-selected {
+    display: flex;
+    padding: 1rem;
+    gap: 0.25rem;
+    justify-content: space-between;
+    align-self: stretch;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    border: 2px #ec6276 solid;
+    width: 100%;
+    cursor: pointer;
+    .full {
+      color: #ec6276;
+      align-self: center;
+      font-size: 1.25rem;
+    }
+    span {
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
   .btn {
     display: flex;
     padding: 1rem;
