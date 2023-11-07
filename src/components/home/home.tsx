@@ -4,7 +4,7 @@ import { FitForm } from '../form/form';
 import styles from './home.module.scss';
 
 export function Home() {
-  const { userCoinSizeSelection } = useAppHook();
+  const { userCoinSizeSelection, coin } = useAppHook();
 
   const handleCoinSelection = (coinSize: string) => {
     userCoinSizeSelection(coinSize);
@@ -30,26 +30,31 @@ export function Home() {
                     onClick={() => handleCoinSelection('2')}
                     src="/coin1.svg"
                     alt="A 2 euros coin picture."
+                    className={coin === '2' ? styles['hover'] : ''}
                   />
                   <img
                     onClick={() => handleCoinSelection('1')}
                     src="/coin2.svg"
                     alt="A 1 euro coin picture."
+                    className={coin === '1' ? styles['hover'] : ''}
                   />
                   <img
                     onClick={() => handleCoinSelection('0.5')}
                     src="/coin3.svg"
                     alt="A 0.50 euros coin picture."
+                    className={coin === '0.5' ? styles['hover'] : ''}
                   />
                   <img
                     onClick={() => handleCoinSelection('0.2')}
                     src="/coin4.svg"
                     alt="A 0.20 euros coin picture."
+                    className={coin === '0.2' ? styles['hover'] : ''}
                   />
                   <img
                     onClick={() => handleCoinSelection('0.05')}
                     src="/coin5.svg"
                     alt="A 0.05 euros coin picture."
+                    className={coin === '0.05' ? styles['hover'] : ''}
                   />
                 </div>
               </div>
