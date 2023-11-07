@@ -1,19 +1,35 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
+import { useAppHook } from '../../hooks/hook';
 import styles from './webcam.module.scss';
 
 export function CustomWebcam() {
+  const navigate = useNavigate();
+  const { userApiCall, coin, fitting, userHandPictureImg, picture, response } =
+    useAppHook();
   const webcamRef = useRef<Webcam>(null);
   const [imgSrc, setImgSrc] = useState<string | null>(null);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current?.getScreenshot();
     setImgSrc(imageSrc!);
-  }, [webcamRef]);
+    setTimeout(() => {
+      userHandPictureImg(imageSrc!);
+    }, 300);
+  }, [webcamRef, userHandPictureImg]);
 
   const retake = () => {
     setImgSrc(null);
   };
+
+  const onClickApi = (coin: string, fitting: string, hand: string) => {
+    userApiCall(coin, fitting, hand);
+  };
+
+  useEffect(() => {
+    response ? navigate('/end') : null;
+  });
 
   return (
     <div className={styles['container']}>
@@ -43,7 +59,11 @@ export function CustomWebcam() {
       </div>
 
       <div className={styles['final-send']}>
-        {imgSrc && <button>Enviar datos</button>}
+        {imgSrc && (
+          <button onClick={() => onClickApi(coin, fitting, picture!)}>
+            Enviar datos
+          </button>
+        )}
       </div>
     </div>
   );

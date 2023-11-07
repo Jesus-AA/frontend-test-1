@@ -12,7 +12,7 @@ export function Footer() {
     <>
       <main className={styles['main']}>
         <section className={styles['btn-section']}>
-          <Link to={'/end'} className={styles['btn-volver']}>
+          <Link to={'/goodbye'} className={styles['btn-volver']}>
             Volver
           </Link>
           <Link to={'/webcam'} className={styles['btn-siguiente']}>

@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userCoinSelection, userFittingSelection } from '../redux/slice';
+import {
+  userCoinSelection,
+  userFittingSelection,
+  userHandPicture,
+} from '../redux/slice';
 import { createThunk } from '../redux/thunk';
 import { ApiRepository } from '../services/api-repository';
 import { AppDispatch, RootState } from '../store/store';
@@ -11,14 +15,14 @@ export function useAppHook() {
     []
   );
 
-  const { coin, fitting, status } = useSelector(
+  const { coin, fitting, status, picture, response } = useSelector(
     (state: RootState) => state.app
   );
 
   const appDispatch = useDispatch<AppDispatch>();
 
-  const userApiCall = (coin: string, fitting: string) => {
-    appDispatch(createThunk({ repo, coin, fitting }));
+  const userApiCall = (coin: string, fitting: string, hand: string) => {
+    appDispatch(createThunk({ repo, coin, fitting, hand }));
   };
 
   const userRingFittingSelection = (fitting: string) => {
@@ -29,12 +33,19 @@ export function useAppHook() {
     appDispatch(userCoinSelection(coinSize));
   };
 
+  const userHandPictureImg = (picture: string) => {
+    appDispatch(userHandPicture(picture));
+  };
+
   return {
     userApiCall,
+    userHandPictureImg,
     userRingFittingSelection,
     userCoinSizeSelection,
     coin,
     fitting,
     status,
+    picture,
+    response,
   };
 }

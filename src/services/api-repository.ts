@@ -4,9 +4,9 @@ export class ApiRepository {
     this.urlBase = urlBase;
   }
 
-  async create(coin: string, fitting: string) {
+  async create(coin: string, fitting: string, hand: string) {
     const raw = JSON.stringify({
-      hand: 'string',
+      hand: hand,
     });
 
     const myHeaders = new Headers();
@@ -22,9 +22,9 @@ export class ApiRepository {
         redirect: 'follow',
       }
     );
-    console.log(response);
+
     const data = await response.json();
-    console.log(data);
+
     return data;
   }
 }
