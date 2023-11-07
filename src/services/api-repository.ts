@@ -5,17 +5,26 @@ export class ApiRepository {
   }
 
   async create(coin: string, fitting: string) {
+    const raw = JSON.stringify({
+      hand: 'string',
+    });
+
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('x-api-key', 'apikey');
+
     const response = await fetch(
       `${this.urlBase}/calculator?coin=${coin}&fitting=${fitting}`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'apikey',
-        },
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
       }
     );
+    console.log(response);
     const data = await response.json();
+    console.log(data);
     return data;
   }
 }

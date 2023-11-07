@@ -7,5 +7,6 @@ export const createThunk = createAsyncThunk<
   { repo: ApiRepository; coin: string; fitting: string }
 >('app/create', async ({ repo, coin, fitting }) => {
   const data = await repo.create(coin, fitting);
+  console.log(data);
   return data;
 });
