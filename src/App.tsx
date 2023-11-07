@@ -1,13 +1,9 @@
-import { Footer } from './components/footer/footer';
-import { Home } from './components/home/home';
-import CustomWebcam from './components/webcam/webcam';
+import { AppRouter } from './routes/app-routes';
 
 function App() {
   return (
     <>
-      <Home />
-      <CustomWebcam />
-      <Footer />
+      <AppRouter />
     </>
   );
 }

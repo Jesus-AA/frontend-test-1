@@ -1,24 +1,23 @@
-import { useAppHook } from '../../hooks/hook';
+import { Link } from 'react-router-dom';
 import styles from './footer.module.scss';
 
 export function Footer() {
-  const { userApiCall, coin, fitting } = useAppHook();
+  // const { userApiCall, coin, fitting } = useAppHook();
 
-  const onClickApi = (coin: string, fitting: string) => {
-    userApiCall(coin, fitting);
-  };
+  // const onClickApi = (coin: string, fitting: string) => {
+  //   userApiCall(coin, fitting);
+  // };
 
   return (
     <>
       <main className={styles['main']}>
         <section className={styles['btn-section']}>
-          <button className={styles['btn-volver']}>Volver</button>
-          <button
-            onClick={() => onClickApi(coin, fitting)}
-            className={styles['btn-siguiente']}
-          >
+          <Link to={'/end'} className={styles['btn-volver']}>
+            Volver
+          </Link>
+          <Link to={'/webcam'} className={styles['btn-siguiente']}>
             Siguiente
-          </button>
+          </Link>
         </section>
         <div className={styles['divider']}></div>
         <address>

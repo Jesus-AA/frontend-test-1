@@ -1,4 +1,5 @@
 import { useAppHook } from '../../hooks/hook';
+import { Footer } from '../footer/footer';
 import { FitForm } from '../form/form';
 import styles from './home.module.scss';
 
@@ -74,6 +75,7 @@ export function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
