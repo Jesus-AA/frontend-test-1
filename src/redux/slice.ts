@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Payload } from '../model/payload';
+import { ApiPayload, Payload } from '../model/payload';
 import { createThunk } from './thunk';
 
 export type AppState = {
@@ -8,7 +8,7 @@ export type AppState = {
   coin: string;
   status: 'idle' | 'loading' | 'loaded' | 'Error';
   picture: string | undefined;
-  response: string | undefined;
+  response: ApiPayload | undefined;
 };
 
 const initialState: AppState = {
@@ -39,8 +39,9 @@ const appSlice = createSlice({
       state.status = 'loading';
     });
     builder.addCase(createThunk.fulfilled, (state, { payload }) => {
+      console.log(payload);
       state.status = 'loaded';
-      state.response = String(payload);
+      state.response = payload;
     });
     builder.addCase(createThunk.rejected, (state) => {
       state.status = 'Error';

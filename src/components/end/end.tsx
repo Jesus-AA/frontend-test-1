@@ -6,7 +6,11 @@ export function End() {
     <>
       <div className={styles['response-div']}>
         <h2>The API responded with:</h2>
-        <span>{response}</span>
+        <span>Index: {response?.index}</span>
+        <span>Middle: {response?.middle}</span>
+        <span> Pinky: {response?.pinky}</span>
+        <span>Ring: {response?.ring}</span>
+        <span>Thumb: {response?.thumb}</span>
       </div>
     </>
   );
